@@ -17,7 +17,6 @@ namespace Project.Gameplay
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
-			Debug.Log(collision.gameObject.name);
 			if (collision.gameObject.TryGetComponent(out Tile tile))
 			{
 				if (tile.IsAvailable)
@@ -32,7 +31,6 @@ namespace Project.Gameplay
 		}
 		private void OnTriggerExit2D(Collider2D collision)
 		{
-			Debug.Log(collision.gameObject.name);
 			if (collision.gameObject.TryGetComponent(out Tile tile))
 			{
 				if (!tile.IsAvailable)
