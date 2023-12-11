@@ -1,28 +1,36 @@
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+public class GridFactory : Factory
 {
 	[SerializeField] private int width, height;
 	[SerializeField] private Tile tilePrefab;
 	public Transform cam;
-	void Start()
+
+	private void Start()
 	{
 		GenerateGrid();
 	}
+
 	private void GenerateGrid()
 	{
 		for (int x = 0; x < width; x++)
 		{
 			for (int y = 0; y < height; y++)
 			{
-				var spawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity);
-				spawnedTile.name = $"Tile {x} {y}";
-
+				var spawnedTile = (Tile)GetProduct(new Vector3(x, y));
 				var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
-				spawnedTile.Init(isOffset);
+				spawnedTile.IsOffset = isOffset;
+				spawnedTile.ProductName = $"Tile {x} {y}";
+				spawnedTile.Initialize();
+
 			}
 		}
 		cam.transform.position = new Vector3(width / 2f - 0.5f, height / 2f - 0.5f, -10);
 	}
-}
 
+	public override IProduct GetProduct(Vector3 position)
+	{
+		Tile instance = Instantiate(tilePrefab, position, Quaternion.identity, transform);
+		return instance;
+	}
+}
