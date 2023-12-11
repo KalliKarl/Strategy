@@ -1,0 +1,21 @@
+{
+    "name": "Project.Gameplay.AssemblyDefinition",
+    "rootNamespace": "Project",
+    "references": [
+        "GUID:669ef1e6b4399ac49b4c0026129b1e79"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "Android",
+        "iOS",
+        "macOSStandalone",
+        "WindowsStandalone64"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
