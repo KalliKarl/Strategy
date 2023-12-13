@@ -29,7 +29,7 @@ namespace Project.Gameplay
 			}
 		}
 
-		public void Initialize()
+		public void Initialize(string name, float hitPoint)
 		{
 			gameObject.name = productName;
 			isAvailable = true;

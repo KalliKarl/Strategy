@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d767e488a8994f340854f7e24eff21ad, type: 3}
+  m_Name: BarrackData
+  m_EditorClassIdentifier: Project.GameUI.AssemblyDefinition:Project.GameUI:UnitData
+  unitName: Barracks
+  type: 0
+  hitPoint: 100
+  damage: 0
+  size: {x: 4, y: 4}
+  icon: {fileID: 21300000, guid: 739f87253a5969e44aede2510cc0885e, type: 3}

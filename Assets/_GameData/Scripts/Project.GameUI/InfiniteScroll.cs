@@ -19,7 +19,10 @@ namespace Project.GameUI
 			lastScrollIndex = 0;
 			for (int i = 0; i < contentScroll.Count; i++)
 			{
-				contentScroll[i].GetComponentInChildren<TMP_Text>().text = i.ToString();
+				var contentUI = contentScroll[i].GetComponent<ProductionUI>();
+				contentUI.Init();
+				contentUI.nameTxt.text = "<size=18>" + i.ToString() + " - </size>" + contentUI.nameTxt.text;
+
 			}
 		}
 

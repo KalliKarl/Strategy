@@ -1,10 +1,10 @@
-using Project.Shared;
+﻿using Project.Shared;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Project.Gameplay
 {
-	public class Barracks : Unit
+	public class PowerPlant : Unit
 	{
 		public List<Tile> tiles;
 		public UnitData data;

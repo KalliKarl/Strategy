@@ -4,6 +4,6 @@
 	{
 		public string ProductName { get; set; }
 
-		public void Initialize();
+		public void Initialize(string name, float hitPoint);
 	}
 }
