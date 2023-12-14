@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bde2b7699b9b1f74ea72305ceb2dd54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseColor: {r: 0.4707939, g: 0.8301887, b: 0.38768244, a: 1}
-  offsetColor: {r: 0.3543396, g: 0.626, b: 0.29233018, a: 1}
+  baseColor: {r: 0.83137256, g: 0.82888114, b: 0.38823527, a: 1}
+  offsetColor: {r: 0.627451, g: 0.5186629, b: 0.29411766, a: 1}
   spriteRenderer: {fileID: 1356168212905566007}
   highlight: {fileID: 9134341895753521789}
 --- !u!61 &7469585272119591291
@@ -154,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8797229609169527258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

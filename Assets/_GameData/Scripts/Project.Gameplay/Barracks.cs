@@ -26,8 +26,15 @@ namespace Project.Gameplay
 				{
 					if (!tiles.Contains(tile))
 					{
+						tile.AvailableHighLight();
 						tiles.Add(tile);
-						tile.IsAvailable = false;
+					}
+				}
+				else
+				{
+					if (!tiles.Contains(tile))
+					{
+						tile.NotAvailableHighLight();
 					}
 				}
 			}
@@ -36,14 +43,11 @@ namespace Project.Gameplay
 		{
 			if (collision.gameObject.TryGetComponent(out Tile tile))
 			{
-				if (!tile.IsAvailable)
-				{
-					if (tiles.Contains(tile))
-					{
-						tiles.Remove(tile);
-						tile.IsAvailable = true;
 
-					}
+				if (tiles.Contains(tile))
+				{
+					tiles.Remove(tile);
+					tile.DisableHighLight();
 				}
 			}
 		}

@@ -31,7 +31,8 @@ namespace Project.Gameplay
 
 		public void Initialize(string name, float hitPoint)
 		{
-			gameObject.name = productName;
+			ProductName = name;
+			gameObject.name = ProductName;
 			isAvailable = true;
 			if (TryGetComponent(out spriteRenderer))
 			{
@@ -39,19 +40,36 @@ namespace Project.Gameplay
 			}
 		}
 
-		private void OnMouseEnter()
+		public void AvailableHighLight() 
 		{
 			highlight?.gameObject.SetActive(true);
-
+			highlight.color = Color.green;
 		}
-		private void OnMouseOver()
+		public void NotAvailableHighLight() 
 		{
 			highlight?.gameObject.SetActive(true);
+			highlight.color = Color.red;
 		}
-		private void OnMouseExit()
+		public void DisableHighLight()
 		{
 			highlight?.gameObject.SetActive(false);
+			highlight.color = Color.white;
 		}
+
+
+		//private void OnMouseEnter()
+		//{
+		//	highlight?.gameObject.SetActive(true);
+
+		//}
+		//private void OnMouseOver()
+		//{
+		//	highlight?.gameObject.SetActive(true);
+		//}
+		//private void OnMouseExit()
+		//{
+		//	highlight?.gameObject.SetActive(false);
+		//}
 
 	}
 }

@@ -17,4 +17,4 @@ MonoBehaviour:
   hitPoint: 10
   damage: 5
   size: {x: 1, y: 1}
-  icon: {fileID: 21300000, guid: 34782b1ea097e6246a1abc6cebad1185, type: 3}
+  icon: {fileID: 21300000, guid: 90a9657cb9601e545a66ae966f2ac89d, type: 3}
