@@ -10,7 +10,7 @@ namespace Project.Gameplay
 		private float damage;
 		private float attackSpeed;
 		private Coroutine attackCoroutine;
-		public Shared.Unit data;
+		public UnitData data;
 
 		public override void GetDamage(float damage)
 		{
@@ -57,7 +57,47 @@ namespace Project.Gameplay
 		{
 			base.Initialize(name, hitPoint);
 		}
+		private void OnTriggerEnter2D(Collider2D collision)
+		{
+			if (collision.gameObject.TryGetComponent(out Tile tile))
+			{
+				if (myTiles.Contains(tile))
+				{
+					tile.GreenHighLight();
+					if (!tiles.Contains(tile))
+					{
+						tiles.Add(tile);
+					}
+				}
+				else if (tile.IsAvailable)
+				{
+					if (!tiles.Contains(tile))
+					{
+						tile.GreenHighLight();
+						tiles.Add(tile);
+					}
+				}
+				else
+				{
+					if (!tiles.Contains(tile))
+					{
+						tile.RedHighLight();
+					}
+				}
+			}
+		}
+		private void OnTriggerExit2D(Collider2D collision)
+		{
+			if (collision.gameObject.TryGetComponent(out Tile tile))
+			{
 
+				if (tiles.Contains(tile))
+				{
+					tiles.Remove(tile);
+					tile.HideHighLight();
+				}
+			}
+		}
 
 	}
 }

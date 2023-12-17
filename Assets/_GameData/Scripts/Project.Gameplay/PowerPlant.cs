@@ -6,8 +6,7 @@ namespace Project.Gameplay
 {
 	public class PowerPlant : Unit
 	{
-		public List<Tile> tiles;
-		public Shared.Unit data;
+		public UnitData data;
 		public override void GetDamage(float damage)
 		{
 			base.GetDamage(damage);
@@ -22,12 +21,27 @@ namespace Project.Gameplay
 		{
 			if (collision.gameObject.TryGetComponent(out Tile tile))
 			{
-				if (tile.IsAvailable)
+				if (myTiles.Contains(tile))
 				{
+					tile.GreenHighLight();
 					if (!tiles.Contains(tile))
 					{
 						tiles.Add(tile);
-						tile.IsAvailable = false;
+					}
+				}
+				else if (tile.IsAvailable)
+				{
+					if (!tiles.Contains(tile))
+					{
+						tile.GreenHighLight();
+						tiles.Add(tile);
+					}
+				}
+				else
+				{
+					if (!tiles.Contains(tile))
+					{
+						tile.RedHighLight();
 					}
 				}
 			}
@@ -36,14 +50,11 @@ namespace Project.Gameplay
 		{
 			if (collision.gameObject.TryGetComponent(out Tile tile))
 			{
-				if (!tile.IsAvailable)
-				{
-					if (tiles.Contains(tile))
-					{
-						tiles.Remove(tile);
-						tile.IsAvailable = true;
 
-					}
+				if (tiles.Contains(tile))
+				{
+					tiles.Remove(tile);
+					tile.HideHighLight();
 				}
 			}
 		}

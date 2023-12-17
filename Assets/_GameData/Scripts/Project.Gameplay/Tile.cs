@@ -18,42 +18,45 @@ namespace Project.Gameplay
 			set
 			{
 				isAvailable = value;
-				if (!isAvailable)
-				{
-					highlight.color = Color.red;
-				}
-				else
-				{
-					highlight.color = Color.white;
-				}
 			}
 		}
-
+		private void OnEnable()
+		{
+			EventManager.OnUnitGenerated += OnUnitGeratedHandler;
+		}
+		private void OnDisable()
+		{
+			EventManager.OnUnitGenerated -= OnUnitGeratedHandler;
+		}
+		private void OnUnitGeratedHandler(ProductionType productionType, GameObject go)
+		{
+			HideHighLight();
+		}
 		public void Initialize(string name, float hitPoint)
 		{
 			ProductName = name;
 			gameObject.name = ProductName;
-			isAvailable = true;
+			IsAvailable = true;
 			if (TryGetComponent(out spriteRenderer))
 			{
 				spriteRenderer.color = IsOffset ? offsetColor : baseColor;
 			}
 		}
 
-		public void AvailableHighLight() 
+		public void GreenHighLight() 
 		{
 			highlight?.gameObject.SetActive(true);
-			highlight.color = new Color(75, 231, 75, 180);
+			highlight.color = new Color32(75, 231, 75, 180);
 		}
-		public void NotAvailableHighLight() 
+		public void RedHighLight() 
 		{
 			highlight?.gameObject.SetActive(true);
-			highlight.color = new Color(231, 75, 75, 180);
+			highlight.color = new Color32(231, 75, 75, 180);
 		}
-		public void DisableHighLight()
+		public void HideHighLight()
 		{
 			highlight?.gameObject.SetActive(false);
-			highlight.color = Color.white;
+			highlight.color = new Color32(231, 231, 231, 128);
 		}
 
 

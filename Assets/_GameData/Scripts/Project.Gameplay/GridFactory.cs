@@ -23,11 +23,11 @@ namespace Project.Gameplay
 					var spawnedTile = (Tile)GetProduct(new Vector3(x, y));
 					var isOffset = x % 2 == 0 && y % 2 != 0 || x % 2 != 0 && y % 2 == 0;
 					spawnedTile.IsOffset = isOffset;
-					spawnedTile.Initialize($"Tile {x} {y}",0);
+					spawnedTile.Initialize($"Tile {x} {y}", 0);
 
 				}
 			}
-			cam.transform.position = new Vector3(width / 2f - 0.5f, height / 2f - 0.5f, -10);
+			cam.transform.position = new Vector3(width / 2f - 0.5f, height / 2f - 0.5f, -10); // move camera to center of grids
 		}
 
 		public override IProduct GetProduct(Vector3 position)

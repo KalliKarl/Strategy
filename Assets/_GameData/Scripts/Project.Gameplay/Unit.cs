@@ -1,4 +1,6 @@
 ﻿using Project.Shared;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Project.Gameplay
@@ -8,7 +10,8 @@ namespace Project.Gameplay
 		private string productName;
 		public string ProductName { get => productName; set => productName = value; }
 		protected float hitPoint;
-
+		public List<Tile> tiles;
+		public List<Tile> myTiles;
 		public virtual void Initialize(string name, float hitPoint)
 		{
 			ProductName = name;
@@ -29,6 +32,37 @@ namespace Project.Gameplay
 		public bool IsAlive()
 		{
 			return hitPoint > 0;
+		}
+		public bool AreAllTilesAvailable()
+		{
+			foreach (Tile tile in tiles)
+			{
+				if (!tile.IsAvailable && !myTiles.Contains(tile))
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		public void MakeTilesAvailable()
+		{
+			foreach (var item in myTiles)
+			{
+				item.IsAvailable = true;
+				item.HideHighLight();
+			}
+		}
+		public void MakeTilesNotAvailable()
+		{
+			MakeTilesAvailable();
+			foreach (var item in tiles)
+			{
+				item.IsAvailable = false;
+				item.HideHighLight();
+				myTiles = tiles.ToList();
+			}
+			tiles.Clear();
 		}
 
 	}

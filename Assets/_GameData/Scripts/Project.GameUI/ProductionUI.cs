@@ -8,7 +8,7 @@ namespace Project.GameUI
 {
 	public class ProductionUI : MonoBehaviour, IPointerDownHandler
 	{
-		public Unit unitData;
+		public UnitData unitData;
 		public Image image;
 		public TMP_Text nameTxt;
 
@@ -21,6 +21,8 @@ namespace Project.GameUI
 		public void OnPointerDown(PointerEventData eventData)
 		{
 			Debug.Log("Clicked on: " + gameObject.name);
+			EventManager.RaiseOnUnitProductionClicked(unitData.type);
+
 		}
 
 	}

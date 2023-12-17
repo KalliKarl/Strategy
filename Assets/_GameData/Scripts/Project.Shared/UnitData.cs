@@ -3,12 +3,12 @@
 namespace Project.Shared
 {
 	[CreateAssetMenu(fileName ="UnitData",menuName ="CreateUnitData")]
-	public class Unit : ScriptableObject
+	public class UnitData : ScriptableObject
 	{
 		public string unitName;
 		public ProductionType type;
-		public string hitPoint;
-		public string damage;
+		public int hitPoint;
+		public int damage;
 		public Vector2 size;
 		public Sprite icon;
 	}

@@ -1,13 +1,11 @@
 using Project.Shared;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Project.Gameplay
 {
 	public class Barracks : Unit
 	{
-		public List<Tile> tiles;
-		public Shared.Unit data;
+		public UnitData data;
 		public override void GetDamage(float damage)
 		{
 			base.GetDamage(damage);
@@ -18,15 +16,24 @@ namespace Project.Gameplay
 			base.Initialize(name, hitPoint);
 		}
 
+
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (collision.gameObject.TryGetComponent(out Tile tile))
 			{
-				if (tile.IsAvailable)
+				if (myTiles.Contains(tile))
+				{
+					tile.GreenHighLight();
+					if (!tiles.Contains(tile))
+					{
+						tiles.Add(tile);
+					}
+				}
+				else if (tile.IsAvailable)
 				{
 					if (!tiles.Contains(tile))
 					{
-						tile.AvailableHighLight();
+						tile.GreenHighLight();
 						tiles.Add(tile);
 					}
 				}
@@ -34,7 +41,7 @@ namespace Project.Gameplay
 				{
 					if (!tiles.Contains(tile))
 					{
-						tile.NotAvailableHighLight();
+						tile.RedHighLight();
 					}
 				}
 			}
@@ -47,7 +54,7 @@ namespace Project.Gameplay
 				if (tiles.Contains(tile))
 				{
 					tiles.Remove(tile);
-					tile.DisableHighLight();
+					tile.HideHighLight();
 				}
 			}
 		}
