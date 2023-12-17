@@ -10,7 +10,7 @@ namespace Project.Gameplay
 		private float damage;
 		private float attackSpeed;
 		private Coroutine attackCoroutine;
-		public UnitData data;
+		public Shared.Unit data;
 
 		public override void GetDamage(float damage)
 		{

@@ -7,7 +7,7 @@ namespace Project.Gameplay
 	public class Barracks : Unit
 	{
 		public List<Tile> tiles;
-		public UnitData data;
+		public Shared.Unit data;
 		public override void GetDamage(float damage)
 		{
 			base.GetDamage(damage);

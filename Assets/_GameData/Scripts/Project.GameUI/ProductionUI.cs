@@ -8,7 +8,7 @@ namespace Project.GameUI
 {
 	public class ProductionUI : MonoBehaviour, IPointerDownHandler
 	{
-		public UnitData unitData;
+		public Unit unitData;
 		public Image image;
 		public TMP_Text nameTxt;
 

@@ -43,12 +43,12 @@ namespace Project.Gameplay
 		public void AvailableHighLight() 
 		{
 			highlight?.gameObject.SetActive(true);
-			highlight.color = Color.green;
+			highlight.color = new Color(75, 231, 75, 180);
 		}
 		public void NotAvailableHighLight() 
 		{
 			highlight?.gameObject.SetActive(true);
-			highlight.color = Color.red;
+			highlight.color = new Color(231, 75, 75, 180);
 		}
 		public void DisableHighLight()
 		{
