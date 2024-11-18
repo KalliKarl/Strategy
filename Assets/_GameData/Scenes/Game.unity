@@ -1626,8 +1626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6727a26b53876a44a99156edeb1726dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 4
-  height: 4
   barracksPrefab: {fileID: 1897721224451726335, guid: 27f79b5bf31b69c41ab2e62c321ec6dc, type: 3}
 --- !u!224 &1581498005 stripped
 RectTransform:

@@ -9,6 +9,7 @@ public class TileGhost : MonoBehaviour
 	public Unit selectedUnit;
 	[SerializeField] private SpriteRenderer spriteRenderer;
 	[SerializeField] private BoxCollider2D collider2d;
+	private Vector2 size;
 	private void OnEnable()
 	{
 		EventManager.OnUnitSelect += OnUnitSelectHandler;
@@ -22,6 +23,7 @@ public class TileGhost : MonoBehaviour
 		collider2d.size = unit.GetComponent<BoxCollider2D>().size;
 		spriteRenderer.size = unit.GetComponent<SpriteRenderer>().size;
 		unit.TryGetComponent(out selectedUnit);
+		size = selectedUnit.size;
 		transform.position = unit.transform.position;
 	}
 	private void Update()

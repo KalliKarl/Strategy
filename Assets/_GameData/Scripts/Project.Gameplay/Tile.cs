@@ -8,6 +8,7 @@ namespace Project.Gameplay
 		[SerializeField] private Color baseColor, offsetColor;
 		[SerializeField] private SpriteRenderer spriteRenderer;
 		[SerializeField] private SpriteRenderer highlight;
+		private TileStates currentState;
 		private bool isAvailable = true;
 		public bool IsOffset { get; set; }
 		private string productName;
@@ -30,9 +31,9 @@ namespace Project.Gameplay
 		}
 		private void OnUnitGeratedHandler(ProductionType productionType, GameObject go)
 		{
-			HideHighLight();
+			ChangeTileState(TileStates.Hidden);
 		}
-		public void Initialize(string name, float hitPoint)
+		public void Initialize(string name, float hitPoint, Vector2 size)
 		{
 			ProductName = name;
 			gameObject.name = ProductName;
@@ -42,21 +43,29 @@ namespace Project.Gameplay
 				spriteRenderer.color = IsOffset ? offsetColor : baseColor;
 			}
 		}
-
-		public void GreenHighLight() 
+		public void ChangeTileState(TileStates newState)
 		{
-			highlight?.gameObject.SetActive(true);
-			highlight.color = new Color32(75, 231, 75, 180);
-		}
-		public void RedHighLight() 
-		{
-			highlight?.gameObject.SetActive(true);
-			highlight.color = new Color32(231, 75, 75, 180);
-		}
-		public void HideHighLight()
-		{
-			highlight?.gameObject.SetActive(false);
-			highlight.color = new Color32(231, 231, 231, 128);
+			switch (newState)
+			{
+				case TileStates.Green:
+					highlight.gameObject.SetActive(true);
+					highlight.color = new Color32(75, 231, 75, 180);
+					currentState = newState;
+					break;
+				case TileStates.Red:
+					Debug.Log("Red" + gameObject.name, gameObject);
+					highlight.gameObject.SetActive(true);
+					highlight.color = new Color32(231, 75, 75, 180);
+					currentState = newState;
+					break;
+				case TileStates.Hidden:
+					if (currentState == TileStates.Red && newState == TileStates.Hidden)
+					Debug.Log("hide" + gameObject.name, gameObject);
+					highlight.gameObject.SetActive(false);
+					highlight.color = new Color32(231, 231, 231, 128);
+					currentState = newState;
+					break;
+			}
 		}
 
 
@@ -75,4 +84,5 @@ namespace Project.Gameplay
 		//}
 
 	}
+	public enum TileStates { Green, Red, Hidden }
 }

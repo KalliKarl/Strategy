@@ -1,5 +1,4 @@
 ﻿using Project.Shared;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Project.Gameplay
@@ -12,9 +11,9 @@ namespace Project.Gameplay
 			base.GetDamage(damage);
 		}
 
-		public override void Initialize(string name, float hitPoint)
+		public override void Initialize(string name, float hitPoint, Vector2 size)
 		{
-			base.Initialize(name, hitPoint);
+			base.Initialize(name, hitPoint, size);
 		}
 
 		private void OnTriggerEnter2D(Collider2D collision)
@@ -23,7 +22,8 @@ namespace Project.Gameplay
 			{
 				if (myTiles.Contains(tile))
 				{
-					tile.GreenHighLight();
+					tile.ChangeTileState(TileStates.Green);
+
 					if (!tiles.Contains(tile))
 					{
 						tiles.Add(tile);
@@ -33,7 +33,7 @@ namespace Project.Gameplay
 				{
 					if (!tiles.Contains(tile))
 					{
-						tile.GreenHighLight();
+						tile.ChangeTileState(TileStates.Green);
 						tiles.Add(tile);
 					}
 				}
@@ -41,7 +41,7 @@ namespace Project.Gameplay
 				{
 					if (!tiles.Contains(tile))
 					{
-						tile.RedHighLight();
+						tile.ChangeTileState(TileStates.Red);
 					}
 				}
 			}
@@ -54,7 +54,7 @@ namespace Project.Gameplay
 				if (tiles.Contains(tile))
 				{
 					tiles.Remove(tile);
-					tile.HideHighLight();
+					tile.ChangeTileState(TileStates.Hidden);
 				}
 			}
 		}

@@ -5,7 +5,6 @@ namespace Project.Gameplay
 {
 	public class BarrackFactory : Factory
 	{
-		[SerializeField] private int width, height;
 		[SerializeField] private Barracks barracksPrefab;
 
 		public static BarrackFactory Instance;
@@ -45,7 +44,7 @@ namespace Project.Gameplay
 		public override IProduct GetProduct(Vector3 position)
 		{
 			Barracks instance = Instantiate(barracksPrefab, position, Quaternion.identity);
-			instance.Initialize(instance.data.unitName, instance.data.hitPoint);
+			instance.Initialize(instance.data.unitName, instance.data.hitPoint,instance.data.size);
 			EventManager.RaiseOnUnitGenerated(instance.data.type, instance.gameObject);
 
 

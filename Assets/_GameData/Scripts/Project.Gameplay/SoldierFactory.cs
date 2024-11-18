@@ -55,7 +55,8 @@ namespace Project.Gameplay
 		{
 			this.soldierIndex = soldierIndex;
 			Soldier spawnedSoldier = (Soldier)GetProduct(spawnPosition);
-			spawnedSoldier.Initialize(soldiersPrefabs[soldierIndex].data.unitName, soldiersPrefabs[soldierIndex].data.hitPoint);
+			var data = soldiersPrefabs[soldierIndex].data;
+			spawnedSoldier.Initialize(data.unitName, data.hitPoint,data.size);
 			EventManager.RaiseOnUnitGenerated(spawnedSoldier.data.type, gameObject);
 		}
 

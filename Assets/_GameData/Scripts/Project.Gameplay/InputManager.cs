@@ -47,15 +47,41 @@ namespace Project.Gameplay
 			{
 				if (selectedUnit != null)
 				{
-					Debug.Log("allOK=?"+selectedUnit.AreAllTilesAvailable());
-					if (selectedUnit.AreAllTilesAvailable())
+					var size = (selectedUnit.size.x * selectedUnit.size.y);
+					Debug.Log("allOK=?" + selectedUnit.AreAllTilesAvailable());
+
+					if (!selectedUnit.isSpawned && selectedUnit.tiles.Count < size)
 					{
-						selectedUnit.MakeTilesNotAvailable();
+						foreach (Tile tile in selectedUnit.tiles)
+						{
+							tile.ChangeTileState(TileStates.Hidden);
+						}
+						Destroy(selectedUnit.gameObject);
 					}
 					else
 					{
-						selectedUnit.transform.position = previousPosition;
+						if (selectedUnit.tiles.Count > size)
+						{
+							if (selectedUnit.AreAllTilesAvailable())
+							{
+								selectedUnit.MakeTilesNotAvailable();
+							}
+							else
+							{
+								selectedUnit.transform.position = previousPosition;
+								if (!selectedUnit.isSpawned)
+								{
+									Destroy(selectedUnit.gameObject);
+								}
+							}
+						}
+						else
+						{
+							Destroy(selectedUnit.gameObject);
+						}
+
 					}
+					
 					selectedUnit = null;
 				}
 			}

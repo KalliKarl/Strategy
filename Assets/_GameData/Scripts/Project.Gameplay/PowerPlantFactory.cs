@@ -45,7 +45,7 @@ namespace Project.Gameplay
 		public override IProduct GetProduct(Vector3 position)
 		{
 			PowerPlant instance = Instantiate(powerPlantPrefab, position, Quaternion.identity);
-			instance.Initialize(instance.data.unitName, instance.data.hitPoint);
+			instance.Initialize(instance.data.unitName, instance.data.hitPoint,instance.data.size);
 			EventManager.RaiseOnUnitGenerated(instance.data.type, instance.gameObject);
 			return instance;
 		}

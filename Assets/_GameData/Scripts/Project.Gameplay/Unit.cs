@@ -10,12 +10,15 @@ namespace Project.Gameplay
 		private string productName;
 		public string ProductName { get => productName; set => productName = value; }
 		protected float hitPoint;
+		public Vector2 size;
 		public List<Tile> tiles;
 		public List<Tile> myTiles;
-		public virtual void Initialize(string name, float hitPoint)
+		public bool isSpawned;
+		public virtual void Initialize(string name, float hitPoint, Vector2 size)
 		{
 			ProductName = name;
 			this.hitPoint = hitPoint;
+			this.size = size;
 			Debug.Log(gameObject.name + " Initialized", gameObject);
 		}
 
@@ -50,7 +53,7 @@ namespace Project.Gameplay
 			foreach (var item in myTiles)
 			{
 				item.IsAvailable = true;
-				item.HideHighLight();
+				item.ChangeTileState(TileStates.Hidden);
 			}
 		}
 		public void MakeTilesNotAvailable()
@@ -59,10 +62,12 @@ namespace Project.Gameplay
 			foreach (var item in tiles)
 			{
 				item.IsAvailable = false;
-				item.HideHighLight();
+				item.ChangeTileState(TileStates.Hidden);
 				myTiles = tiles.ToList();
 			}
 			tiles.Clear();
+			isSpawned = true;
+
 		}
 
 	}

@@ -23,7 +23,7 @@ namespace Project.Gameplay
 					var spawnedTile = (Tile)GetProduct(new Vector3(x, y));
 					var isOffset = x % 2 == 0 && y % 2 != 0 || x % 2 != 0 && y % 2 == 0;
 					spawnedTile.IsOffset = isOffset;
-					spawnedTile.Initialize($"Tile {x} {y}", 0);
+					spawnedTile.Initialize($"Tile {x} {y}", 0,new Vector2(1,1));
 
 				}
 			}
